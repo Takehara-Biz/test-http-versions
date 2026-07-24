@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# オプション付きcurlで通信時に、SSLKEYLOGを取得してファイル出力する。
-# curlくらい、ホストOSで実行すれば良いと思うかもしれないが、http3をサポートしたcurlがまだ普及していないため、専用のDockerコンテナで実施している。
-# 参考　https://ik.am/entries/792
+# 専用のDockerコンテナからhttp2のリクエストを投げ、ついでに復号化用のsslkeyを取得する。
 
 docker run --rm -it \
   -e SSLKEYLOGFILE=/keys/sslkey-http2.log \
