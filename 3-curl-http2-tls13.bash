@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# 専用のDockerコンテナからhttp2のリクエストを投げ、ついでに復号化用のsslkeyを取得する。
+rm -f ./sslkeylogs/http2.log
 
+# 専用のDockerコンテナからhttp2のリクエストを投げ、ついでに復号化用のsslkeyを取得する。
+# 「host.docker.internal」は、コンテナから見た時のホストOSを指す。
 docker run --rm -it \
   -e SSLKEYLOGFILE=/keys/sslkeylogs/http2.log \
   -v $(pwd):/keys \
