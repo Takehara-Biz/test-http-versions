@@ -1,6 +1,6 @@
-Dockerコンテナ上にNginxを立ち上げ、ホストOS側から、curlコマンドで、様々なHTTPバージョンでリクエストを投げます。
+Dockerコンテナ上にNginxを立ち上げ、Nginxに対して様々なHTTPバージョンでリクエストを投げる。
 
-それをWiresharkから閲覧して、HTTPのバージョンごとの通信の違いを確かめる実験をするリポジトリです。
+それをWiresharkから閲覧して、HTTPのバージョンごとの通信の違いを確かめる実験をする。
 
 # 前提
 
@@ -9,6 +9,15 @@ Dockerコンテナ上にNginxを立ち上げ、ホストOS側から、curlコマ
 
 # セットアップ
 数字から始まるbashファイルを、1から順に実行する。
+
+# WiresharkからHTTP3のレスポンスデータの見方
+
+HTTP3はデフォルトで暗号化されており、Wiresharkで中身を見ることができない。見るための方法は以下の通り。
+
+* 「3-xxx.bash」を実行する前に、「monitoring-with-wireshark.bash」を実行しておく。
+* 「3-xxx.bash」を実行すると、カレントディレクトリに「sslkey-http??.log」が生成される。
+* Wiresharkの「Preferences」「Protocols」「TLS」の「(Pre)-Master-Secret log filename」で「sslkey.log」を指定する。
+* すると、Wireshark上に、復号化したデータが表示される（Info列に「GET,https,...」などの文字列が表示される）
 
 # 備忘録
 
