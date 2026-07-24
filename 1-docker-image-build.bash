@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker image build -t experience-http3 .
+# thvは、test-http-versionsの略。
+docker image build -t thv-image .
